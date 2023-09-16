@@ -17,10 +17,10 @@ function Home(){
           </ol>
         
           <form id='form'>
-            <input red={inputRef} type="text" placeholder="Username"></input>
+            <input ref={inputRef} type="text" placeholder="Username"></input>
           </form>
-          <div style={{backgroundColor:"yellow",width:50,height:30}}classname="start">
-           <Link to={'quiz'}>Start</Link>
+          <div className="start">
+           <Link className="btn" to={'quiz'}>Start</Link>
           </div>
 
 

@@ -5,13 +5,14 @@
 
 .start{
     display: flex;
-    justify-content: center;
-    padding-top: 2em;
+    justify-content:center;
     background-color: #e9f10c;
+    width: 200px;
+    margin-left:300px;
 }
 
 .start .btn{
-    padding: .2em 1.7em;
+    /* padding: .2em 1.7em; */
     border: none;
     border-radius: .1em;
     font-size: 1.2em;
