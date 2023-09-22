@@ -1,8 +1,50 @@
 import React from "react";
-
-function Result(){
-    return(
-        <h1>Result Page</h1>
-    )
+import { Link } from "react-router-dom";
+import "../styles/result.css";
+import ResultTable from "./ResultTable";
+function Result() {
+  function onRestart() {
+    console.log("on Restart");
+  }
+  return (
+    <div className="container">
+      <h1 className="title text-light">Quiz application</h1>
+      <div className="result flex-center" >
+        <div className="flex">
+          <span>Username</span>
+          <span className="bold">Daily Tuition</span>
+        </div>
+        <div className="flex">
+          <span>Total Quiz Points:</span>
+          <span className="bold">100</span>
+        </div>
+        <div className="flex">
+          <span>Total Questions:</span>
+          <span className="bold">10</span>
+        </div>
+        <div className="flex">
+          <span>Total Attempts:</span>
+          <span className="bold">8</span>
+        </div>
+        <div className="flex">
+          <span>Total Points Earned</span>
+          <span className="bold">80</span>
+        </div>
+      
+      <div className="flex">
+        <span>Status:</span>
+        <span className="bold">Passed</span>
+      </div>
+      </div>
+      <div className="start" >
+        <Link className="btn"to={"/"} onClick={onRestart}>
+          Restart
+        </Link>
+      </div>
+      <div className="container">
+       <ResultTable></ResultTable>
+      </div>
+    </div>
+  );
 }
 export default Result;

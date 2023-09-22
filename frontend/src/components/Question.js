@@ -2,12 +2,17 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import data from "../database/data";
 import "../styles/App.css";
+
+import { useFetchQuestion } from "../hooks/FetchQuestions";
+
 function Question() {
   const [checked, setChecked] = useState(undefined);
+  const [{isloading,apiData,serverError}]=useFetchQuestion();
   const question = data[0];
 
   useEffect(() => {
-    console.log(question);
+    console.log(isloading);
+    
   });
   function onSelect() {
     console.log("button changed");

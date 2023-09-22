@@ -7,12 +7,13 @@
     display: flex;
     justify-content:center;
     background-color: #e9f10c;
-    width: 200px;
-    margin-left:300px;
+    margin-left:320px;
+    width:fit-content
+    /* padding-top: 1em; */
 }
 
 .start .btn{
-    /* padding: .2em 1.7em; */
+    padding: .2em 1.7em;
     border: none;
     border-radius: .1em;
     font-size: 1.2em;
@@ -24,7 +25,8 @@
 #form{
     display: flex;
     justify-content: center;
-    margin-top: 4em;
+    margin: 4em;
+
 }
 
 #form .userid{

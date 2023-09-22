@@ -17,7 +17,7 @@ function Home(){
           </ol>
         
           <form id='form'>
-            <input ref={inputRef} type="text" placeholder="Username"></input>
+            <input style={{width:"80%",height:"10"}} ref={inputRef} type="text" placeholder="Username"></input>
           </form>
           <div className="start">
            <Link className="btn" to={'quiz'}>Start</Link>
