@@ -92,12 +92,12 @@ export default [
     },
     {
         id:10,
-        question:" Which of the following data type is supported in C++ but not in C?",
+        question:" Identify the incorrect constructor type.",
         options:[
-            "String",
-            "Double",
-            "Bool",
-            "Float"
+            "last question",
+            "last question",
+            "last question",
+            "last question",
         ]
-    }
+    },
 ]

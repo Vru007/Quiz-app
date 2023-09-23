@@ -3,7 +3,7 @@ export const questionReducer=createSlice({
 
     name:'questions',
     initialState:{
-        queue:["1","2","3","4"],
+        queue:[],
         answers:[],
         trace:0
     },
@@ -14,9 +14,27 @@ export const questionReducer=createSlice({
                 ...state,
                 queue:action.payload
             }
-        }
+        },
+        moveNextQuestion:(state)=>{
+                return{ 
+                    ...state,
+                    trace:state.trace+1
+    }},
+    movePrevQuestion:(state)=>{
+        return{
+          ...state,
+            trace:state.trace-1
+        }},
+
+    resetQuestions:()=>{
+         return{
+            queue:[],
+            answers:[],
+            trace:0
+         }
+    },
     }
 })
 
-export const {startExamAction}=questionReducer.actions;
+export const {startExamAction, moveNextQuestion,movePrevQuestion,resetQuestions}=questionReducer.actions;
 export default questionReducer.reducer;

@@ -1,39 +1,47 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import data from "../database/data";
-import "../styles/App.css";
+// import "../styles/App.css";
+import {useSelector} from'react-redux';
 
 import { useFetchQuestion } from "../hooks/FetchQuestions";
 
-function Question() {
+function Question({onChecked}) {
   const [checked, setChecked] = useState(undefined);
+  const result = useSelector(state => state.result.result);
+  const { trace } = useSelector(state => state.questions);
   const [{isloading,apiData,serverError}]=useFetchQuestion();
-  const question = data[0];
-
+  const questions = useSelector(state=>state.questions.queue[state.questions.trace]);
+  
+  
+     
+  useEffect(()=>{
+      console.log(trace);
+  });
   useEffect(() => {
-    console.log(isloading);
+    // console.log(apiData);
     
   });
-  function onSelect() {
-    console.log("button changed");
+  function onSelect(i) {
+    onChecked(i);
+    // console.log(i);
   }
   return (
     <div className="questions">
-      <h2 className="text-light">{question.question}</h2>
-      <ul key={question.id}>
-        {question.options.map((q, i) => (
+      <h2 className="text-light">{questions?.question}</h2>
+      <ul key={questions?.id}>
+        {questions?.options.map((q, i) => (
           <li key={i}>
             <input
               type="radio"
               value={false}
               name="options"
               id={`q${i}-option`}
-              onChange={onSelect()}
+              onChange={()=>onSelect(i)}
             ></input>
-            <lable className="text-primary" htmlFor={`q${i}-option`}>
+            <label className="text-primary" htmlFor={`q${i}-option`}>
               {q}
-            </lable>
-            <div className="check "></div>
+            </label>
+            <div className="check"></div>
           </li>
   ))}
       </ul>

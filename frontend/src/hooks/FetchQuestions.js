@@ -39,3 +39,22 @@ return[getData,setGetData];
 
 
 }
+
+export const MoveNextQuestion=()=>async(dispatch)=>{
+  try{
+        dispatch(Action.moveNextQuestion());
+  }
+  catch(err){
+    console.log(err)
+  }
+ 
+}
+
+export const MovePrevQuestion=()=>async(dispatch)=>{ 
+   try{
+     dispatch(Action.movePrevQuestion());
+   }
+   catch(err){
+     console.log(err)
+   }
+}
