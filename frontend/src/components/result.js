@@ -6,11 +6,34 @@ import { useDispatch } from "react-redux";
 import {useSelector} from'react-redux';
 import { resetResult } from "../redux/result_reducer";
 import { resetQuestions } from "../redux/question_reducer";
+import {answers} from"../database/data";
 function Result() {
   const dispatch = useDispatch();
   const state=useSelector(state=>state);
   const totalPoints=state.questions.queue.length*10;
   const totalQuestion=totalPoints/10;
+  const result=useSelector(state=>state.result.result);
+  var count=0;
+  var rightAns=0;
+
+  for(var i=0;i<totalQuestion;i++){
+       if(result[i]!=undefined){
+        count+=1;
+       }
+  }
+  for(var i=0;i<totalQuestion;i++){
+       if(result[i]==answers[i]){
+           rightAns+=1;
+       }
+  }
+  const PointsEarned=rightAns*10;
+  var status;
+  if(PointsEarned>30){
+    status="Pass";
+  }
+  else{
+    status="Fail";
+  }
   function onRestart() {
     dispatch(resetResult());
     dispatch(resetQuestions());
@@ -33,16 +56,16 @@ function Result() {
         </div>
         <div className="flex">
           <span>Total Attempts:</span>
-          <span className="bold">8</span>
+          <span className="bold">{count}</span>
         </div>
         <div className="flex">
           <span>Total Points Earned</span>
-          <span className="bold">80</span>
+          <span className="bold">{PointsEarned}</span>
         </div>
       
       <div className="flex">
         <span>Status:</span>
-        <span className="bold">Passed</span>
+        <span className="bold">{status}</span>
       </div>
       </div>
       <div className="start" >
