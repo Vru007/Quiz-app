@@ -29,10 +29,10 @@ function Result() {
   const PointsEarned=rightAns*10;
   var status;
   if(PointsEarned>30){
-    status="Pass";
+    status="Passed";
   }
   else{
-    status="Fail";
+    status="Failed";
   }
   function onRestart() {
     dispatch(resetResult());
@@ -65,7 +65,7 @@ function Result() {
       
       <div className="flex">
         <span>Status:</span>
-        <span className="bold">{status}</span>
+        <span className="bold" style={{color:`${status=="Passed"? "#2aff95":"#ff2a66"}`}}>{status}</span>
       </div>
       </div>
       <div className="start" >
