@@ -9,12 +9,12 @@ export const AnswersArray=(result)=> async(dispatch)=>{
     }
 }
 
-export const updateResult=(index)=>async(dispatch)=>{
-    try{
+// export const updateResult=(index)=>async(dispatch)=>{
+//     try{
 
-      dispatch(Action.updateResultAction(index))  
-    }
-    catch(err){
-        console.log(err);
-    }
-}
+//       dispatch(Action.updateResultAction(index))  
+//     }
+//     catch(err){
+//         console.log(err);
+//     }
+// }

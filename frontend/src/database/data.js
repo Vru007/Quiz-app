@@ -101,3 +101,5 @@ export default [
         ]
     },
 ]
+
+export const answers=[1,0,1,2,3,1,0,3,2,1];

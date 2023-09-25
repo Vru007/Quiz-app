@@ -3,10 +3,14 @@ import { Link } from "react-router-dom";
 import "../styles/result.css";
 import ResultTable from "./ResultTable";
 import { useDispatch } from "react-redux";
+import {useSelector} from'react-redux';
 import { resetResult } from "../redux/result_reducer";
 import { resetQuestions } from "../redux/question_reducer";
 function Result() {
   const dispatch = useDispatch();
+  const state=useSelector(state=>state);
+  const totalPoints=state.questions.queue.length*10;
+  const totalQuestion=totalPoints/10;
   function onRestart() {
     dispatch(resetResult());
     dispatch(resetQuestions());
@@ -21,11 +25,11 @@ function Result() {
         </div>
         <div className="flex">
           <span>Total Quiz Points:</span>
-          <span className="bold">100</span>
+          <span className="bold">{totalPoints}</span>
         </div>
         <div className="flex">
           <span>Total Questions:</span>
-          <span className="bold">10</span>
+          <span className="bold">{totalQuestion}</span>
         </div>
         <div className="flex">
           <span>Total Attempts:</span>

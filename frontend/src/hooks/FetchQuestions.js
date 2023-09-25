@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import data from "../database/data";
+import data, {answers}from "../database/data";
 import { useDispatch } from "react-redux";
 /* redux actions*/
 
@@ -19,10 +19,10 @@ export const useFetchQuestion=()=>{
         try{
              let question=await data;
              if(question.length>0){
-             setGetData(prev=>({...prev,isloading:false,apiData:question}))
+             setGetData(prev=>({...prev,isloading:false,apiData:{question,answers}}))
         
              /* Dispatch*/
-             dispatch(Action.startExamAction(question));
+             dispatch(Action.startExamAction({question,answers}));
             }
             else{
                 throw new Error("No question there")
