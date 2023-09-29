@@ -14,10 +14,10 @@ function Quiz(){
     const result = useSelector((state)=>(state.result.result));
     const { queue, trace } = useSelector(state => state.questions);
      
-    useEffect(()=>{
-         console.log(result);
+    // useEffect(()=>{
+    //     //  console.log(result);
         
-    });
+    // });
 
     function onPrev(){
         if(trace>0){

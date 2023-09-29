@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import {useSelector} from'react-redux';
 
+import { getServerData } from "../helper/helper";
 export default function ResultTable(){
-    return(
+  
+ 
+  const [data,setData]=useState([]);
+  useEffect(()=>{
+    getServerData('http://localhost:5000/api/results',(res)=>{
+      setData(res);
+    })
+  },[])
+  console.log(data);
+  return(
+
+    
+
         <div>
           <table>
             <thead className="table-header">
@@ -13,12 +27,22 @@ export default function ResultTable(){
               </tr>
             </thead>
             <tbody>
-            <tr className="table-body">
-            <td>Daily Tuition</td>
-            <td>03</td>
-            <td>20</td>
-            <td>Passed</td>
-          </tr>
+            {!data ?? <div>No Data Found</div>}
+            {
+              data.map((item,index)=>(
+                
+                <tr className="table-body" key={index}>
+                <td>{item.username}</td>
+                <td>{item.attempts}</td>
+                <td>{item.points}</td>
+                <td>{item.achived}</td>
+              </tr>
+            
+              ))
+             
+          
+          }
+         
             </tbody>
           </table>
         </div>

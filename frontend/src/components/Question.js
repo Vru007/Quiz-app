@@ -16,13 +16,14 @@ function Question({onChecked}) {
   const questions = useSelector(state=>state.questions.queue[state.questions.trace]);
   const dispatch=useDispatch();
   
+  
      
   useEffect(()=>{
        dispatch(updateResultAction({trace,checked}))
-       console.log({trace,checked});
+      //  console.log({trace,checked});
   },[checked]);
   useEffect(() => {
-    console.log(state);
+    // console.log(state);
     
   });
   function onSelect(i) {

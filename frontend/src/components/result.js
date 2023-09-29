@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../styles/result.css";
 import ResultTable from "./ResultTable";
@@ -7,15 +7,19 @@ import {useSelector} from'react-redux';
 import { resetResult } from "../redux/result_reducer";
 import { resetQuestions } from "../redux/question_reducer";
 import {answers} from"../database/data";
+import { usePublishResult } from "../hooks/FetchAnswers";
 function Result() {
   const dispatch = useDispatch();
   const state=useSelector(state=>state);
+  const username=state.result.userId;
   const totalPoints=state.questions.queue.length*10;
   const totalQuestion=totalPoints/10;
   const result=useSelector(state=>state.result.result);
   var count=0;
   var rightAns=0;
-
+  var passed="passed";
+  var failed="failed";
+  // console.log(result);
   for(var i=0;i<totalQuestion;i++){
        if(result[i]!=undefined){
         count+=1;
@@ -27,13 +31,15 @@ function Result() {
        }
   }
   const PointsEarned=rightAns*10;
-  var status;
+// const [status,setStatus]=useEffect('');
   if(PointsEarned>30){
-    status="Passed";
+    
   }
   else{
-    status="Failed";
+    setStatus(failed);
   }
+
+  usePublishResult({result,username:username,attempts:count,points:PointsEarned,achived:status})
   function onRestart() {
     dispatch(resetResult());
     dispatch(resetQuestions());
@@ -44,7 +50,7 @@ function Result() {
       <div className="result flex-center" >
         <div className="flex">
           <span>Username</span>
-          <span className="bold">Daily Tuition</span>
+          <span className="bold">{username}</span>
         </div>
         <div className="flex">
           <span>Total Quiz Points:</span>
