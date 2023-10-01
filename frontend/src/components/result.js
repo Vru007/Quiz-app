@@ -8,6 +8,7 @@ import { resetResult } from "../redux/result_reducer";
 import { resetQuestions } from "../redux/question_reducer";
 import {answers} from"../database/data";
 import { usePublishResult } from "../hooks/FetchAnswers";
+import { useState } from "react";
 function Result() {
   const dispatch = useDispatch();
   const state=useSelector(state=>state);
@@ -17,8 +18,7 @@ function Result() {
   const result=useSelector(state=>state.result.result);
   var count=0;
   var rightAns=0;
-  var passed="passed";
-  var failed="failed";
+ var status="";
   // console.log(result);
   for(var i=0;i<totalQuestion;i++){
        if(result[i]!=undefined){
@@ -32,14 +32,16 @@ function Result() {
   }
   const PointsEarned=rightAns*10;
 // const [status,setStatus]=useEffect('');
-  if(PointsEarned>30){
-    
+  if(PointsEarned<30){
+     
+   status="failed"
   }
   else{
-    setStatus(failed);
+    status="pass";
   }
+  
 
-  usePublishResult({result,username:username,attempts:count,points:PointsEarned,achived:status})
+  usePublishResult({result,username:username,attempts:count,points:PointsEarned,achived:status},[])
   function onRestart() {
     dispatch(resetResult());
     dispatch(resetQuestions());
@@ -71,7 +73,7 @@ function Result() {
       
       <div className="flex">
         <span>Status:</span>
-        <span className="bold" style={{color:`${status=="Passed"? "#2aff95":"#ff2a66"}`}}>{status}</span>
+        <span className="bold" style={{color:`${status=="pass"? "#2aff95":"#ff2a66"}`}}>{status}</span>
       </div>
       </div>
       <div className="start" >
