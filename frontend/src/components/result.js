@@ -18,7 +18,7 @@ function Result() {
   const result=useSelector(state=>state.result.result);
   var count=0;
   var rightAns=0;
- var status="";
+ let status="";
   // console.log(result);
   for(var i=0;i<totalQuestion;i++){
        if(result[i]!=undefined){
@@ -40,8 +40,10 @@ function Result() {
     status="pass";
   }
   
-
+ console.log(status)
   usePublishResult({result,username:username,attempts:count,points:PointsEarned,achived:status},[])
+
+
   function onRestart() {
     dispatch(resetResult());
     dispatch(resetQuestions());
@@ -73,7 +75,7 @@ function Result() {
       
       <div className="flex">
         <span>Status:</span>
-        <span className="bold" style={{color:`${status=="pass"? "#2aff95":"#ff2a66"}`}}>{status}</span>
+        <span className="bold" style={{color:`${status=="pass"? "#2aff95":"#ff2a66"}`}}>status</span>
       </div>
       </div>
       <div className="start" >

@@ -24,10 +24,12 @@ export const AnswersArray=(result)=> async(dispatch)=>{
 export const usePublishResult =(resultData)=>{
   
     const{result,username}=resultData;
+    console.log("result data");
+    // console.log({resultData})
     (async ()=>{
         try{
               if(username==null)throw new Error("Please provide a username");
-            await postServerData('http://localhost:5000/api/results',resultData,(data)=>data)
+            await postServerData('https://dull-lime-cheetah-yoke.cyclic.cloud/api/results',resultData,(data)=>data)
             }
         catch(err){
             console.log(err);

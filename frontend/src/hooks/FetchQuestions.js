@@ -34,7 +34,7 @@ export const useFetchQuestion=()=>{
         try{
              
             //  let question=await data;
-          const [{questions,answers}]=  await getServerData('http://localhost:5000/api/questions',(data)=>data)
+          const [{questions,answers}]=  await getServerData('https://dull-lime-cheetah-yoke.cyclic.cloud/api/questions',(data)=>data)
           // console.log({questions,answers});
             //  console.log(question);
              if(questions.length>0){

@@ -5,7 +5,7 @@ const resultModel=mongoose.Schema({
     username:{type:String},
     attempts:{type:Number,default:0},
     points:{type:Number,default:0},
-    achived:{type:String,default:""},
+    achived:{type:String},
     createdAt:{type:Date,default:Date.now()},
 });
 

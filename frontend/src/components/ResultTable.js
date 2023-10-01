@@ -7,7 +7,7 @@ export default function ResultTable(){
  
   const [data,setData]=useState([]);
   useEffect(()=>{
-    getServerData('http://localhost:5000/api/results',(res)=>{
+    getServerData('https://dull-lime-cheetah-yoke.cyclic.cloud/api/results',(res)=>{
       setData(res);
     })
   },[])
@@ -35,7 +35,8 @@ export default function ResultTable(){
                 <td>{item.username}</td>
                 <td>{item.attempts}</td>
                 <td>{item.points}</td>
-                <td>{item.achived}</td>
+                <td>{console.log(item)}</td>
+
               </tr>
             
               ))
